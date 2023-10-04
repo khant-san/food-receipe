@@ -3,20 +3,20 @@ import { useState } from 'react'
 import Image from 'next/image'
 import { CarProps } from '@/types'
 import { CarDetail, CustomButton } from '.'
-import { calculateCarRent } from '@/utils'
+import { calculateCarRent, genereateCarImageUrl } from '@/utils'
 
 interface CarCardProps {
     car: CarProps
 }
 const CarCard = ({ car }: CarCardProps) => {
-    const { city_mpg, years, make, modal, transmission, drive } = car
-    const carRent = calculateCarRent(city_mpg, years);
+    const { city_mpg, year, make, model, transmission, drive } = car
+    const carRent = calculateCarRent(city_mpg, year);
     const [isOpen, setIsOpen] = useState(false)
     return (
         <div className='car-card group'>
             <div className='car-card__content'>
                 <h2 className='car-card__content-title'>
-                    {make} {modal}
+                    {make} {model}
                 </h2>
             </div>
             <p className='flex mt-6 text-[32px] font-extrabold'>
@@ -29,7 +29,7 @@ const CarCard = ({ car }: CarCardProps) => {
                 </span>
             </p>
             <div className='relative w-full h-40 my-3 object-contain'>
-                <Image src="/hero.png" alt="car modal" fill priority className='object-contain' />
+                <Image src={genereateCarImageUrl(car)} alt="car modal" fill priority className='object-contain' />
             </div>
 
             <div className='relative flex w-full mt-2 '>
@@ -53,7 +53,7 @@ const CarCard = ({ car }: CarCardProps) => {
                         </p>
                     </div>
                 </div>
-                <div className='car-car__btn-container'>
+                <div className='car-card__btn-container'>
                     <CustomButton
                         title="View More"
                         containerStyles='w-full py-[16px] rounded-full bg-primary-blue'

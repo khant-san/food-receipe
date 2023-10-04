@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { Fragment } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { CarProps } from '@/types';
+import { genereateCarImageUrl } from '@/utils';
 interface CarDetailsProps {
     isOpen: boolean;
     closeModal: () => void;
@@ -54,22 +55,22 @@ const CarDetail = ({ isOpen, closeModal, car }: CarDetailsProps) => {
                                     </button>
                                     <div className='flex-1 flex flex-col gap-3'>
                                         <div className='relative w-full h-40 bg-pattern bg-cover bg-center rounded-lg'>
-                                            <Image src="/hero.png" alt="car modal" fill priority className='object-contain' />
+                                            <Image src={genereateCarImageUrl(car, 'angle')} alt="car modal" fill priority className='object-contain' />
                                         </div>
                                         <div className='flex gap-3'>
                                             <div className='flex-1 relative w-full h-24 bg-primary-blue-100 rounded-lg'>
-                                                <Image src="/hero.png" alt="car modal" fill priority className='object-contain' />
+                                                <Image src={genereateCarImageUrl(car, '29')} alt="car modal" fill priority className='object-contain' />
                                             </div>
                                             <div className='flex-1 relative w-full h-24 bg-primary-blue-100 rounded-lg'>
-                                                <Image src="/hero.png" alt="car modal" fill priority className='object-contain' />
+                                                <Image src={genereateCarImageUrl(car, '33')} alt="car modal" fill priority className='object-contain' />
                                             </div>
                                             <div className='flex-1 relative w-full h-24 bg-primary-blue-100 rounded-lg'>
-                                                <Image src="/hero.png" alt="car modal" fill priority className='object-contain' />
+                                                <Image src={genereateCarImageUrl(car, '13')} alt="car modal" fill priority className='object-contain' />
                                             </div>
                                         </div>
                                     </div>
                                     <div className='flex-1 flex flex-col gap-2'>
-                                        <h2 className='font-semibold tex-xl capitalize'>{car.make}{car.modal}</h2>
+                                        <h2 className='font-semibold tex-xl capitalize'>{car.make}{car.model}</h2>
                                         <div className='mt-3 flex flex-wrap gap-4'>
                                             {Object.entries(car).map(([key, value]) => (
                                                 <div className='flex justify-between gap-5 w-full text-right' key={key}>
