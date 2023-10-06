@@ -4,7 +4,7 @@ import { footerLinks } from "@/constants"
 
 const Footer = () => {
     return (
-        <footer className="flex flex-col text-black-100 mt-5 border-t border-gray-100">
+        <footer className="flex flex-col text-black-100 mt-5 border-t border-gray-100 ">
             <div className="flex max-md:flex-col flex-wrap justify-between gap-5 sm:px-16 px-6 py-10">
                 <div
                     className="flex flex-col justify-start items-start gap-6">
@@ -14,9 +14,10 @@ const Footer = () => {
                         width={118}
                         height={18}
                         className="object-contail" />
-                    <p className="text-base text-gray-700"> bla <br /> All right received &copy;</p>
+                    <p className="text-base text-gray-700"> Thank you for visiting our food recipe haven.<br />
+                        We're dedicated to bringing you the best in culinary delights.<br /> Explore, cook, and enjoy! <br /> All right received &copy;</p>
                 </div>
-                <div className="footer__links">
+                <div className="footer__links ">
                     {footerLinks.map((link) => (
                         <div key={link.title}
                             className="footer__link">
@@ -34,8 +35,8 @@ const Footer = () => {
 
                 </div>
             </div>
-            <div className="flex justify-between items-center flex-wrap mt-10 border-t border-gray-100 sm:px-16 px-6 py-10 ">
-                <p>@2023 Bla:All Right Recerved.</p>
+            <div className="flex justify-between items-center flex-wrap mt-10 border-t border-gray-100 sm:px-16 px-6 py-10 bg-[#FFDA43]">
+                <p>@2023 :All Right Recerved.</p>
                 <div className="footer__copyrights-link">
 
                     <Link
@@ -53,7 +54,7 @@ const Footer = () => {
 
 
 
-        </footer>
+        </footer >
     )
 }
 

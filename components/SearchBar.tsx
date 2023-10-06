@@ -14,32 +14,35 @@ const SearchButton = ({ otherClasses }: { otherClasses: string }) => (
             height={40}
             className="object-contain" />
     </button>
+
 )
+
 const SearchBar = () => {
-    const [manufacturer, setManufacture] = useState('');
-    const [model, setModel] = useState('');
+    const [category, setCategory] = useState('');
+    const [name, setName] = useState('');
     const router = useRouter();
     const handleSearch = (e: React.
         FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        if (manufacturer == '' && model === '') {
+        if (category == '' && name === '') {
             return alert('Please fill in the search bar');
         }
         updateSearchParams(
-            model.toLocaleLowerCase(),
-            manufacturer.toLocaleLowerCase())
+            category.toLocaleLowerCase(),
+            name.toLocaleLowerCase(),
+        )
     }
-    const updateSearchParams = (model: string, manufacturer: string) => {
+    const updateSearchParams = (category: string, name: string,) => {
         const searchParams = new URLSearchParams(window.location.search);
-        if (model) {
-            searchParams.set('model', model)
+        if (name) {
+            searchParams.set('name', name)
         } else {
-            searchParams.delete('model')
+            searchParams.delete('name')
         }
-        if (manufacturer) {
-            searchParams.set('manufacturer', manufacturer)
+        if (category) {
+            searchParams.set('category', category)
         } else {
-            searchParams.delete('manufacturer')
+            searchParams.delete('category')
         }
 
         const newPathname = `${window.location.pathname}?${searchParams.toString()}`
@@ -49,14 +52,14 @@ const SearchBar = () => {
         <form className='searchbar' onSubmit={handleSearch}>
             <div className='searchbar__item'>
                 <SearchManufacture
-                    manufacturer={manufacturer}
-                    setManufacture={setManufacture}
+                    category={category}
+                    setCategory={setCategory}
                 />
                 <SearchButton otherClasses="sm:hidden" />
             </div>
             <div className='searchbar__item'>
                 <Image
-                    src="/model-icon.png"
+                    src="/sushi.png"
                     width={25}
                     height={25}
                     alt="car model"
@@ -64,9 +67,9 @@ const SearchBar = () => {
                 <input
                     type="text"
                     name="model"
-                    value={model}
-                    onChange={(e) => setModel(e.target.value)}
-                    placeholder='Tiguan'
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    placeholder='Sushi'
                     className='searchbar__input'
                 />
                 <SearchButton otherClasses='sm:hidden' />

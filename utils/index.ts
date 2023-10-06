@@ -1,4 +1,4 @@
-import { CarProps, FilterProps } from "@/types";
+import { CarProps, CategoryProps, FilterProps, FoodFilterProps } from "@/types";
 
 export async function fetchCars(filters: FilterProps) {
     const { manufacturer, year, model, limit, fuel } = filters;
@@ -20,34 +20,41 @@ export async function fetchCars(filters: FilterProps) {
 
     return result;
 }
+export async function fetchFoods(filters: FoodFilterProps) {
+    const { name, category, area, ingredients } = filters;
+    let result: any;
 
-export const calculateCarRent = (city_mpg: number, year: number) => {
-    const basePricePerDay = 50; // Base rental price per day in dollars
-    const mileageFactor = 0.1; // Additional rate per mile driven
-    const ageFactor = 0.05; // Additional rate per year of vehicle age
+    if (category !== '') {
+        const response = fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`);
+        result = (await response).json();
+    } else {
+        const response = fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${name}`);
+        result = (await response).json();
+    }
 
-    // Calculate additional rate based on mileage and age
-    const mileageRate = city_mpg * mileageFactor;
-    const ageRate = (new Date().getFullYear() - year) * ageFactor;
 
-    // Calculate total rental rate per day
-    const rentalRatePerDay = basePricePerDay + mileageRate + ageRate;
 
-    return rentalRatePerDay.toFixed(0);
-};
-export const genereateCarImageUrl = (car: CarProps, angle?: string) => {
-    const url = new URL('https://cdn.imagin.studio/getimage');
-    const { make, year, model } = car;
-    url.searchParams.append('customer', 'hrjavascript-mastery');
-    url.searchParams.append('make', make);
-    url.searchParams.append('modelFamily', model.split(" ")[0]);
-    url.searchParams.append('zoomType', 'fullscreen');
-    url.searchParams.append('modelYear', `${year}`);
-    // url.searchParams.append('zoomLevel', zoomLevel);
-    url.searchParams.append('angle', `${angle}`);
 
-    return `${url}`;
+    return result;
 }
+
+export async function fetchFoodCategory() {
+
+
+    const response = fetch(`https://www.themealdb.com/api/json/v1/1/categories.php`);
+    const result = (await response).json()
+
+    fetch(`https://www.themealdb.com/api/json/v1/1/categories.php`)
+        .then(response => response.json())
+        .then(data => console.log(data))
+
+
+
+    return result;
+}
+
+
+
 
 export const updateSearchParams = (type: string, value: string) => {
     const searchParams = new URLSearchParams(window.location.search);

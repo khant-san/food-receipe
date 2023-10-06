@@ -3,18 +3,20 @@ import Image from 'next/image'
 import { CustomButton } from '.'
 
 const Hero = () => {
-    const handleScroll = () => { };
+    const handleScroll = () => {
+
+    };
     return (
         <div className='hero'>
             <div className='flex-1 pt-36 padding-x'>
-                <h1 className='hero__title'>Find, book or rent a house --quickly and easily</h1>
+                <h1 className='hero__title'>Find your favoirte receipe  --quickly and easily</h1>
                 <p className='hero__subtitle'>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Architecto id nulla harum rerum excepturi dolor, recusandae molestiae aut laboriosam adipisci non amet dicta qui sequi ab optio ipsum facere doloremque.
+                    Discover a world of deliciousness! Explore easy-to-follow recipes for all tastes and occasions. From savory dishes to sweet treats, we've got your cravings covered. Let's cook up something wonderful together!
 
                 </p>
                 <CustomButton
                     title='Explore'
-                    containerStyles="bg-primary-blue text-white rounded-full mt-10"
+                    containerStyles="bg-[#F38C20] text-white rounded-full mt-10"
                     handleClick={handleScroll}
                 />
             </div>
@@ -24,7 +26,8 @@ const Hero = () => {
                     <Image src="/hero.png"
                         alt="hero"
                         fill
-                        className='object-contain' />
+                        className='object-contain object-left'
+                    />
 
                 </div>
                 <div className='hero__image-overlay' />
