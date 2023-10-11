@@ -9,7 +9,7 @@ const Hero = () => {
     return (
         <div className='hero'>
             <div className='flex-1 pt-36 padding-x'>
-                <h1 className='hero__title'>Find your favoirte receipe  --quickly and easily</h1>
+                <h1 className='hero__title'>Find your favourite recipe  --quickly and easily</h1>
                 <p className='hero__subtitle'>
                     Discover a world of deliciousness! Explore easy-to-follow recipes for all tastes and occasions. From savory dishes to sweet treats, we've got your cravings covered. Let's cook up something wonderful together!
 
