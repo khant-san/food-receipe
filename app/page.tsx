@@ -1,10 +1,10 @@
 import { FoodCard, Hero, SearchBar, ShowMore } from '@/components'
 
-import { MealProps } from '@/types';
+import { FilterProps, MealProps } from '@/types';
 import { fetchFoods } from '@/utils'
 
 
-export default async function Home({ searchParams }) {
+export default async function Home({ searchParams }: any) {
 
   const allFood = await fetchFoods({
     name: searchParams.name || '',
