@@ -85,11 +85,11 @@ const CarDetail = ({ isOpen, closeModal, meal }: MealDetailsProps) => {
                                                 key == 'strInstructions' ?
                                                     <div className='flex flex-col justify-between gap-5 w-full text-right' key={key} >
                                                         <h4 className='text-gray capitalize text-left'>{key.substring(3)}</h4>
-                                                        <p className='text-black-100 font-semibold text-left'>{meal[key]}</p>
+                                                        <p className='text-black-100 font-semibold text-left'>{meal.strInstructions}</p>
                                                     </div> :
                                                     <div className='flex justify-between gap-5 w-full text-right' key={key}>
                                                         <h4 className='text-gray capitalize'>{key.substring(3)}</h4>
-                                                        <p className='text-black-100 font-semibold'>{meal[key]}</p>
+                                                        <p className='text-black-100 font-semibold'>{meal[key as keyof MealProps]}</p>
                                                     </div>
 
                                             ))}
