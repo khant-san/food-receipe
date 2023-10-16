@@ -30,7 +30,7 @@ const CarCard = ({ meal, category }: MealCardProps) => {
             </p>
             <div className='relative w-full h-40 my-3 object-contain rounded-lg '>
 
-                <Image src={strMealThumb} alt="car modal" fill priority className='object-contain p-3' />
+                <Image src={strMealThumb} alt="car modal" fill priority sizes="100vw" className='object-contain p-3' />
 
 
             </div>
@@ -51,7 +51,7 @@ const CarCard = ({ meal, category }: MealCardProps) => {
                             {strTags ?
                                 strTags.split(",").map((item) => (
 
-                                    <span className={`bg-green-100 text-yellow-100 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-yellow-900`}>{item}</span>
+                                    <span className={`bg-green-100 text-yellow-100 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-yellow-900`} key={item}>{item}</span>
                                 )) : <span className='px-2.5 py-0.5'></span>
                             }
 
